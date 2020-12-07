@@ -16,7 +16,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         print(query_components)
         challenge = query_components["hub.challenge"] 
         msg = '%s' % (challenge)
-        self.wfile.write(challenge)
+        self.wfile.write(challenge.encode())
         print(self.request)
 
 
