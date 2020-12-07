@@ -13,6 +13,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
         query_components = parse_qs(urlparse(self.path).query)
+        print(query_components)
         challenge = query_components["hub_challenge"] 
         msg = '%s' % (challenge)
         self.wfile.write(msg.encode())
