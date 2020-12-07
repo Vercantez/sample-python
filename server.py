@@ -5,7 +5,7 @@ import socketserver
 from http import HTTPStatus
 
 
-from urlparse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
