@@ -11,7 +11,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         msg = 'Hello! you requested %s' % (self.path)
         self.wfile.write(msg.encode())
-        print(self)
+        print(self.request)
 
 
 port = int(os.getenv('PORT', 80))
