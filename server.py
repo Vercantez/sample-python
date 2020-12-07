@@ -5,11 +5,16 @@ import socketserver
 from http import HTTPStatus
 
 
+from urlparse import urlparse, parse_qs
+
+
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
-        msg = 'Hello! you requested %s' % (self.requestline)
+        query_components = parse_qs(urlparse(self.path).query)
+        challenge = query_components["hub_challenge"] 
+        msg = 'Hello! you requested %s' % (challenge)
         self.wfile.write(msg.encode())
         print(self.request)
 
