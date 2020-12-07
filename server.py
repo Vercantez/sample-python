@@ -18,6 +18,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         msg = '%s' % (challenge)
         self.wfile.write(challenge[0].encode())
         print(self.request)
+        
+    def do_POST(self):
+        self.send_response(HTTPStatus.OK)
+        self.end_headers()
+        print(self.rfile)
+        print(self.request)
 
 
 port = int(os.getenv('PORT', 80))
